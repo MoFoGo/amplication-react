@@ -12,10 +12,13 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "npm-run-all -p start:*",
+    "start:frontend": "cross-env PORT=5000 react-scripts start",
+    "start:backend": "npm --prefix server start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "postinstall": "npm ci --prefix admin-ui && npm ci --prefix server"
   },
   "eslintConfig": {
     "extends": [
@@ -34,5 +37,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "npm-run-all": "^4.1.5"
   }
 }
