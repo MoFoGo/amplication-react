@@ -1,8 +1,4 @@
-import {
-  Injectable,
-  UnauthorizedException,
-  NotFoundException,
-} from "@nestjs/common";
+import { Injectable, UnauthorizedException } from "@nestjs/common";
 // @ts-ignore
 // eslint-disable-next-line
 import { UserService } from "../user/user.service";
@@ -10,7 +6,6 @@ import { Credentials } from "./Credentials";
 import { PasswordService } from "./password.service";
 import { TokenService } from "./token.service";
 import { UserInfo } from "./UserInfo";
-import { User } from "../user/base/User";
 
 @Injectable()
 export class AuthService {
@@ -48,46 +43,5 @@ export class AuthService {
       accessToken,
       ...user,
     };
-  }
-  async signup(credentials: Credentials): Promise<UserInfo> {
-    const { username, password } = credentials;
-    const user = await this.userService.create({
-      data: {
-        username,
-        password,
-        roles: ["todoUser"],
-      },
-    });
-    if (!user) {
-      throw new UnauthorizedException("Could not create user");
-    }
-    //@ts-ignore
-    const accessToken = await this.tokenService.createToken(username, password);
-    return {
-      accessToken,
-      username: user.username,
-      roles: user.roles,
-    };
-  }
-  async me(authorization: string = ""): Promise<User> {
-    const bearer = authorization.replace(/^Bearer\s/, "");
-    const username = this.tokenService.decodeToken(bearer);
-    const result = await this.userService.findOne({
-      where: { username },
-      select: {
-        createdAt: true,
-        firstName: true,
-        id: true,
-        lastName: true,
-        roles: true,
-        updatedAt: true,
-        username: true,
-      },
-    });
-    if (!result) {
-      throw new NotFoundException(`No resource was found for ${username}`);
-    }
-
-    return result;
   }
 }

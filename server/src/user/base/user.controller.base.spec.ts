@@ -11,46 +11,46 @@ import { UserService } from "../user.service";
 const nonExistingId = "nonExistingId";
 const existingId = "existingId";
 const CREATE_INPUT = {
-  createdAt: new Date(),
-  firstName: "exampleFirstName",
   id: "exampleId",
+  createdAt: new Date(),
+  updatedAt: new Date(),
+  firstName: "exampleFirstName",
   lastName: "exampleLastName",
+  username: "exampleUsername",
   password: "examplePassword",
   roles: ["exampleRoles"],
-  updatedAt: new Date(),
-  username: "exampleUsername",
 };
 const CREATE_RESULT = {
-  createdAt: new Date(),
-  firstName: "exampleFirstName",
   id: "exampleId",
+  createdAt: new Date(),
+  updatedAt: new Date(),
+  firstName: "exampleFirstName",
   lastName: "exampleLastName",
+  username: "exampleUsername",
   password: "examplePassword",
   roles: ["exampleRoles"],
-  updatedAt: new Date(),
-  username: "exampleUsername",
 };
 const FIND_MANY_RESULT = [
   {
-    createdAt: new Date(),
-    firstName: "exampleFirstName",
     id: "exampleId",
+    createdAt: new Date(),
+    updatedAt: new Date(),
+    firstName: "exampleFirstName",
     lastName: "exampleLastName",
+    username: "exampleUsername",
     password: "examplePassword",
     roles: ["exampleRoles"],
-    updatedAt: new Date(),
-    username: "exampleUsername",
   },
 ];
 const FIND_ONE_RESULT = {
-  createdAt: new Date(),
-  firstName: "exampleFirstName",
   id: "exampleId",
+  createdAt: new Date(),
+  updatedAt: new Date(),
+  firstName: "exampleFirstName",
   lastName: "exampleLastName",
+  username: "exampleUsername",
   password: "examplePassword",
   roles: ["exampleRoles"],
-  updatedAt: new Date(),
-  username: "exampleUsername",
 };
 
 const service = {
@@ -137,9 +137,9 @@ describe("User", () => {
   test("GET /users/:id non existing", async () => {
     await request(app.getHttpServer())
       .get(`${"/users"}/${nonExistingId}`)
-      .expect(404)
+      .expect(HttpStatus.NOT_FOUND)
       .expect({
-        statusCode: 404,
+        statusCode: HttpStatus.NOT_FOUND,
         message: `No resource was found for {"${"id"}":"${nonExistingId}"}`,
         error: "Not Found",
       });

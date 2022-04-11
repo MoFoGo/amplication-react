@@ -11,9 +11,7 @@ https://docs.amplication.com/docs/how-to/custom-code
   */
 import { InputType, Field } from "@nestjs/graphql";
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString, IsOptional, ValidateNested } from "class-validator";
-import { TaskUpdateManyWithoutUsersInput } from "./TaskUpdateManyWithoutUsersInput";
-import { Type } from "class-transformer";
+import { IsString, IsOptional } from "class-validator";
 @InputType()
 class UserUpdateInput {
   @ApiProperty({
@@ -47,6 +45,17 @@ class UserUpdateInput {
   @Field(() => String, {
     nullable: true,
   })
+  username?: string;
+
+  @ApiProperty({
+    required: false,
+    type: String,
+  })
+  @IsString()
+  @IsOptional()
+  @Field(() => String, {
+    nullable: true,
+  })
   password?: string;
 
   @ApiProperty({
@@ -61,28 +70,5 @@ class UserUpdateInput {
     nullable: true,
   })
   roles?: Array<string>;
-
-  @ApiProperty({
-    required: false,
-    type: () => TaskUpdateManyWithoutUsersInput,
-  })
-  @ValidateNested()
-  @Type(() => TaskUpdateManyWithoutUsersInput)
-  @IsOptional()
-  @Field(() => TaskUpdateManyWithoutUsersInput, {
-    nullable: true,
-  })
-  tasks?: TaskUpdateManyWithoutUsersInput;
-
-  @ApiProperty({
-    required: false,
-    type: String,
-  })
-  @IsString()
-  @IsOptional()
-  @Field(() => String, {
-    nullable: true,
-  })
-  username?: string;
 }
 export { UserUpdateInput };

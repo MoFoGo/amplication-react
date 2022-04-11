@@ -1,10 +1,7 @@
-import { TaskCreateNestedManyWithoutUsersInput } from "./TaskCreateNestedManyWithoutUsersInput";
-
 export type UserCreateInput = {
   firstName?: string | null;
   lastName?: string | null;
+  username: string;
   password: string;
   roles: Array<string>;
-  tasks?: TaskCreateNestedManyWithoutUsersInput;
-  username: string;
 };

@@ -1,18 +1,18 @@
 {
-  "dataServiceGeneratorVersion": "0.12.1",
+  "dataServiceGeneratorVersion": "0.12.3",
   "appInfo": {
-    "name": "My app",
+    "name": "My app-1",
     "description": "",
-    "version": "pddfeg84",
-    "id": "cl0uc4owt161290901s606p0m6qw",
-    "url": "https://app.amplication.com/cl0uc4owt161290901s606p0m6qw",
+    "version": "7i6vgeu1",
+    "id": "cl1uhpvuy1270101s6khjj8coi",
+    "url": "https://staging-oc.amplication.com/cl1uhpvuy1270101s6khjj8coi",
     "settings": {
       "dbHost": "localhost",
       "dbName": "",
       "dbPassword": "admin",
       "dbPort": 5432,
       "dbUser": "admin",
-      "appId": "cl0uc4owt161290901s606p0m6qw",
+      "appId": "cl1uhpvuy1270101s6khjj8coi",
       "authProvider": "Jwt"
     }
   }
