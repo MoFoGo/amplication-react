@@ -1,12 +1,9 @@
-import { Task } from "../task/Task";
-
 export type User = {
-  createdAt: Date;
-  firstName: string | null;
   id: string;
-  lastName: string | null;
-  roles: Array<string>;
-  tasks?: Array<Task>;
+  createdAt: Date;
   updatedAt: Date;
+  firstName: string | null;
+  lastName: string | null;
   username: string;
+  roles: Array<string>;
 };

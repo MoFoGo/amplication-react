@@ -9,10 +9,6 @@ import { UserList } from "./user/UserList";
 import { UserCreate } from "./user/UserCreate";
 import { UserEdit } from "./user/UserEdit";
 import { UserShow } from "./user/UserShow";
-import { TaskList } from "./task/TaskList";
-import { TaskCreate } from "./task/TaskCreate";
-import { TaskEdit } from "./task/TaskEdit";
-import { TaskShow } from "./task/TaskShow";
 import { jwtAuthProvider } from "./auth-provider/ra-auth-jwt";
 
 const App = (): React.ReactElement => {
@@ -32,7 +28,7 @@ const App = (): React.ReactElement => {
   return (
     <div className="App">
       <Admin
-        title={"My app"}
+        title={"My app-1"}
         dataProvider={dataProvider}
         authProvider={jwtAuthProvider}
         theme={theme}
@@ -45,13 +41,6 @@ const App = (): React.ReactElement => {
           edit={UserEdit}
           create={UserCreate}
           show={UserShow}
-        />
-        <Resource
-          name="Task"
-          list={TaskList}
-          edit={TaskEdit}
-          create={TaskCreate}
-          show={TaskShow}
         />
       </Admin>
     </div>
